@@ -1,6 +1,6 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useState } from "react";
+import { motion } from "framer-motion";
 import { FaReact, FaNodeJs, FaPython } from "react-icons/fa";
 import { SiTypescript, SiMongodb, SiGo, SiJavascript, SiSocketdotio, SiExpress, SiVercel, SiRender } from "react-icons/si";
 import Image from "next/image";
@@ -157,30 +157,7 @@ const projectVariants = {
   },
 };
 
-const imageVariants = {
-  hidden: { opacity: 0, x: 100, scale: 0.96 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    scale: 1,
-    transition: {
-      type: "spring",
-      stiffness: 100,
-      damping: 20,
-      mass: 0.8,
-      ease: "easeInOut",
-    },
-  },
-};
-
 export default function Projects() {
-  const projectEls = useRef<(HTMLDivElement | null)[]>([]);
-
-  // Create scroll and transform hooks for each project
-  const scrolls = projects.map((_, idx) => useScroll({ target: projectEls.current[idx] }));
-  const yTransforms = scrolls.map(({ scrollYProgress }) => useTransform(scrollYProgress, [0, 1], [0, 60]));
-  const scaleTransforms = scrolls.map(({ scrollYProgress }) => useTransform(scrollYProgress, [0, 1], [1, 1.08]));
-
   const [lightbox, setLightbox] = useState<{ open: boolean; img: string | null }>({ open: false, img: null });
 
   return (
@@ -200,17 +177,15 @@ export default function Projects() {
           return (
             <motion.div
               key={project.title}
-              ref={el => { projectEls.current[idx] = el; }}
               className={`project-section grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[80vh] ${idx % 2 === 0 ? '' : 'lg:flex-row-reverse'}`}
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.5 }}
             >
-              {/* Image/Video with parallax and lightbox */}
+              {/* Image/Video with lightbox */}
               <motion.div
-                variants={imageVariants}
-                style={{ y: yTransforms[idx], scale: scaleTransforms[idx] }}
+                variants={projectVariants}
                 className="relative w-full h-[250px] md:h-[400px] rounded-2xl overflow-hidden shadow-soft bg-white/10 border border-accent/10 cursor-pointer group"
                 transition={{ type: 'spring', stiffness: 100, damping: 20, mass: 0.8, ease: 'easeInOut' }}
                 onClick={() => setLightbox({ open: true, img: project.image })}

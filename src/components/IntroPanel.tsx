@@ -64,11 +64,8 @@ export default function IntroPanel() {
   const typewriter = useTypewriter(jobTitles);
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
+    const handleMouseMove = () => {
       if (!faceRef.current) return;
-      const rect = faceRef.current.getBoundingClientRect();
-      const cx = rect.left + rect.width / 2;
-      const cy = rect.top + rect.height / 2;
     };
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
