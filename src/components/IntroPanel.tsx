@@ -1,6 +1,5 @@
 "use client";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { FaLinkedin, FaGithub, FaEnvelope, FaDownload } from "react-icons/fa";
 import { useRef, useEffect, useState } from "react";
 
@@ -61,11 +60,6 @@ function useTypewriter(words: string[], delay = 120, pause = 1200) {
 
 export default function IntroPanel() {
   const faceRef = useRef<HTMLDivElement>(null);
-  const [eyePos, setEyePos] = useState({ x: 0, y: 0 });
-  const [headTilt, setHeadTilt] = useState({ x: 0, y: 0 });
-  const [browPos, setBrowPos] = useState({ x: 0, y: 0 });
-  const [browAnim, setBrowAnim] = useState(0);
-  const [smileAnim, setSmileAnim] = useState(0);
 
   const typewriter = useTypewriter(jobTitles);
 
@@ -80,16 +74,6 @@ export default function IntroPanel() {
       const maxDist = 18;
       const dist = Math.min(Math.sqrt(dx * dx + dy * dy), maxDist);
       const angle = Math.atan2(dy, dx);
-      setEyePos({
-        x: Math.cos(angle) * dist,
-        y: Math.sin(angle) * dist,
-      });
-      setHeadTilt({
-        x: dx / rect.width * 5,
-        y: dy / rect.height * 5,
-      });
-      setBrowAnim(dy / rect.height * 8);
-      setSmileAnim(dx / rect.width * 8);
     };
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
@@ -110,7 +94,7 @@ export default function IntroPanel() {
             transition={{ type: "spring", stiffness: 80, damping: 16 }}
             className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-foreground mb-4 font-[Rubik]"
           >
-            Hi, I'm Giorgi
+            Hi, I&apos;m Giorgi
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
