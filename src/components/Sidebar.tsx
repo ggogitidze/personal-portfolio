@@ -13,39 +13,6 @@ const navLinks = [
   { name: "Resume", href: "#resume" },
 ];
 
-const navItemVariants = {
-  hidden: { opacity: 0, y: -20 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: i * 0.1,
-      duration: 0.5,
-      ease: "easeOut",
-    },
-  }),
-};
-
-const mobileMenuVariants = {
-  hidden: { opacity: 0, y: -20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.3,
-      ease: "easeOut",
-    },
-  },
-  exit: {
-    opacity: 0,
-    y: -20,
-    transition: {
-      duration: 0.2,
-      ease: "easeIn",
-    },
-  },
-};
-
 export default function Sidebar() {
   const [open, setOpen] = useState(false);
 

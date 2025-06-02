@@ -18,45 +18,6 @@ const researchExperience = [
   },
 ];
 
-const personalProjects = [
-  {
-    title: "Snippedia",
-    org: "Personal Project",
-    date: "10/24 – present",
-    description:
-      "Developed a secure, full-stack web app for sharing, searching, and bookmarking code snippets with GitHub OAuth and mobile responsiveness.",
-    achievements: [
-      "Designed backend with Go (Fiber), MongoDB Atlas, JWT-secured REST APIs.",
-      "Built a responsive React interface with TailwindCSS, real-time filtering, and search.",
-      "Automated deployments with GitHub Actions, Vercel, and Render.",
-    ],
-  },
-  {
-    title: "CodeBoard",
-    org: "Personal Project",
-    date: "03/25 – present",
-    description:
-      "Engineered a live multi-user code editor supporting 10+ languages with WebSocket-based real-time collaboration and session management.",
-    achievements: [
-      "Built WebSocket backend (Node.js + Express) for <110ms latency.",
-      "React + Monaco Editor for syntax highlighting and collaborative editing.",
-      "Role-based access control for instructors and viewers.",
-    ],
-  },
-  {
-    title: "TaskFlow",
-    org: "Personal Project",
-    date: "02/25 – present",
-    description:
-      "Developed a real-time task management system with drag-and-drop boards, real-time sync, and secure multi-user authentication.",
-    achievements: [
-      "Socket.io-based real-time sync backend (Node.js + MongoDB).",
-      "JWT authentication and modular Express backend.",
-      "Seamless React frontend with board state accuracy.",
-    ],
-  },
-];
-
 const techIcons = {
   Python: <FaPython color="#3776AB" size={22} title="Python" />,
   TensorFlow: <SiTensorflow color="#FF6F00" size={22} title="TensorFlow" />,

@@ -72,8 +72,6 @@ export default function IntroPanel() {
       const dx = e.clientX - cx;
       const dy = e.clientY - cy;
       const maxDist = 18;
-      const dist = Math.min(Math.sqrt(dx * dx + dy * dy), maxDist);
-      const angle = Math.atan2(dy, dx);
     };
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
@@ -122,7 +120,7 @@ export default function IntroPanel() {
           transition={{ delay: 0.3, type: "spring", stiffness: 80, damping: 16 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12"
         >
-          {socials.map((s, i) => (
+          {socials.map((s) => (
             <motion.a
               key={s.name}
               href={s.href}

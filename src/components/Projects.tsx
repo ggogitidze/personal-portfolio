@@ -1,11 +1,10 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { FaReact, FaNodeJs, FaPython, FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import { FaReact, FaNodeJs, FaPython } from "react-icons/fa";
 import { SiTypescript, SiMongodb, SiGo, SiJavascript, SiSocketdotio, SiExpress, SiVercel, SiRender } from "react-icons/si";
 import Image from "next/image";
 import React from 'react';
-import { FaRegHandPointer } from "react-icons/fa";
 
 const techIcons: { [key: string]: React.ReactNode } = {
   React: <FaReact color="#61DAFB" size={22} title="React" />,
@@ -295,7 +294,13 @@ export default function Projects() {
       {/* Lightbox Modal */}
       {lightbox.open && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80" onClick={() => setLightbox({ open: false, img: null })}>
-          <img src={lightbox.img!} alt="Project screenshot enlarged" className="max-w-[95vw] max-h-[90vh] rounded-2xl shadow-2xl border-4 border-accent" />
+          <Image
+            src={lightbox.img!}
+            alt="Project screenshot enlarged"
+            width={1000}
+            height={1000}
+            className="max-w-[95vw] max-h-[90vh] rounded-2xl shadow-2xl border-4 border-accent"
+          />
         </div>
       )}
     </section>
