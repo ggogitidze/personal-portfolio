@@ -91,7 +91,7 @@ const projects = [
     role: "Team Lead",
     timeline: "2025 – Present",
     github: "https://github.com/ggogitidze/codeboard",
-    demo: "https://code-board.netlify.app",
+    demo: "https://code-board-three.vercel.app",
     image: "/codeboard-screenshot.png",
     demoVideo: null,
   },
