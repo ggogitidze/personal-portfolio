@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 const navLinks = [
   { name: "Home", href: "#home" },
@@ -65,6 +66,9 @@ export default function Sidebar() {
               >
                 <FaTimes size={28} />
               </button>
+              <div className="flex flex-col items-center mt-4">
+                <Image src="/next.svg" alt="Giorgi Gogitidze Logo" width={64} height={64} className="mb-6 rounded-full" />
+              </div>
               <nav className="flex flex-col gap-6 mt-16">
                 {navLinks.filter(l => l.name !== "About").map((link, i) => (
                   <motion.a
