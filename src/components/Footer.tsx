@@ -15,7 +15,7 @@ export default function Footer() {
             viewport={{ once: true }}
             className="text-[12vw] leading-none font-bold tracking-tighter uppercase"
           >
-            Let's<br />Talk.
+            Let&rsquo;s<br />Talk.
           </motion.h2>
         </div>
 
@@ -32,7 +32,7 @@ export default function Footer() {
 
           <div className="flex flex-col md:items-end justify-end text-white/60 text-sm">
             <span>&copy; {new Date().getFullYear()} Giorgi Gogitidze</span>
-            <span>Designed & Built by Giorgi Gogitidze</span>
+            <span>Designed &amp; Built by Giorgi Gogitidze</span>
           </div>
         </div>
 

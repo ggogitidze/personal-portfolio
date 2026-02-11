@@ -1,7 +1,4 @@
 "use client";
-import { motion } from "framer-motion";
-import { FaPython, FaBrain } from "react-icons/fa";
-import { SiTensorflow, SiKeras } from "react-icons/si";
 
 const researchExperience = [
   {

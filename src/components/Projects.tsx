@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
@@ -87,10 +87,10 @@ export default function Projects() {
 
                 <div className="flex gap-6 mt-4">
                   <a href={project.demo} target="_blank" rel="noopener noreferrer" className="text-lg font-bold border-b border-black hover:text-accent hover:border-accent transition-colors pb-1">
-                    Live Demo ↗
+                    Live Demo &nearr;
                   </a>
                   <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-lg font-bold border-b border-black hover:text-accent hover:border-accent transition-colors pb-1">
-                    GitHub ↗
+                    GitHub &nearr;
                   </a>
                 </div>
               </div>
