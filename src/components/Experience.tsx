@@ -8,8 +8,7 @@ const researchExperience = [
     title: "Machine Learning Research Assistant",
     org: "The Cog AI Lab, Caldwell University",
     date: "03/23 – 05/25",
-    description:
-      "Developed and visualized model performance, improved GPT-2 training speed by 20%, reduced response time by 23%, and increased lexical diversity through reinforcement learning integration.",
+    description: "Developed and visualized model performance, improved GPT-2 training speed by 20%, reduced response time by 23%, and increased lexical diversity through reinforcement learning integration.",
     achievements: [
       "Leveraged Python, TensorFlow, Keras, and Matplotlib for model transparency and interpretability.",
       "Published research: Using a GPT with Reinforcement Learning for More Personalized or Targeted Text Generation.",
@@ -18,116 +17,49 @@ const researchExperience = [
   },
 ];
 
-const techIcons = {
-  Python: <FaPython color="#3776AB" size={22} title="Python" />,
-  TensorFlow: <SiTensorflow color="#FF6F00" size={22} title="TensorFlow" />,
-  Keras: <SiKeras color="#D00000" size={22} title="Keras" />,
-  "Reinforcement Learning": <FaBrain color="#4A90E2" size={22} title="Reinforcement Learning" />,
-};
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-      type: "spring",
-      stiffness: 80,
-      damping: 18,
-      mass: 0.7,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 40, scale: 0.96 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      type: "spring",
-      stiffness: 120,
-      damping: 18,
-      mass: 0.8,
-    },
-  },
-};
-
 export default function Experience() {
   return (
-    <section id="experience" className="py-16 flex flex-col items-center relative">
-      <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="text-4xl font-extrabold mb-12 text-accent tracking-tight sticky top-4 z-30 bg-background/80 dark:bg-background-dark/80 backdrop-blur-md px-6 py-2 rounded-2xl shadow-soft border border-accent/10"
-        style={{ boxShadow: '0 4px 24px 0 rgba(0,0,0,0.08)' }}
-      >
-        Research Experience
-      </motion.h2>
+    <section id="experience" className="section-spacing px-6 md:px-12 w-full">
+      <div className="max-w-[1600px] mx-auto">
+        <div className="flex flex-col gap-12">
+          {/* Section Header */}
+          <div className="w-full h-[1px] bg-black mb-8" />
+          <h2 className="heading-medium uppercase mb-8">Experience</h2>
 
-      <div className="w-full max-w-4xl px-4">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          className="space-y-8"
-        >
-          {researchExperience.map((exp) => (
-            <motion.div
-              key={exp.title}
-              variants={itemVariants}
-              className="group relative bg-white/60 dark:bg-black/40 rounded-2xl shadow-soft p-8 border border-accent/10 overflow-hidden backdrop-blur-lg hover:shadow-xl transition-all duration-300"
-            >
-              {/* Content */}
-              <div className="space-y-6">
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-                  <h3 className="text-2xl font-bold text-foreground">{exp.title}</h3>
-                  <div className="flex gap-2 items-center">
-                    <span className="bg-accent/10 text-accent px-3 py-1 rounded-full text-xs font-semibold">{exp.org}</span>
-                    <span className="text-xs opacity-70">{exp.date}</span>
+          {/* Experience Grid */}
+          <div className="w-full">
+            {researchExperience.map((exp) => (
+              <div key={exp.title} className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 py-8 border-t border-black/10">
+                {/* Left: Date & Org */}
+                <div className="md:col-span-4 flex flex-col justify-between">
+                  <div className="text-xl font-bold">{exp.org}</div>
+                  <div className="text-lg text-black/60 font-mono mt-2">{exp.date}</div>
+                </div>
+
+                {/* Right: Details */}
+                <div className="md:col-span-8 flex flex-col gap-6">
+                  <h3 className="text-2xl font-bold">{exp.title}</h3>
+                  <p className="body-text text-black/80 max-w-2xl">{exp.description}</p>
+
+                  <ul className="list-disc ml-4 space-y-2 mt-2 text-black/70">
+                    {exp.achievements.map((ach) => (
+                      <li key={ach}>{ach}</li>
+                    ))}
+                  </ul>
+
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    {exp.tech.map((t) => (
+                      <span key={t} className="px-3 py-1 border border-black/20 rounded-full text-sm font-mono uppercase tracking-wide">
+                        {t}
+                      </span>
+                    ))}
                   </div>
                 </div>
-
-                <p className="text-foreground/80">{exp.description}</p>
-
-                {/* Tech Stack */}
-                <div className="flex flex-wrap gap-2">
-                  {exp.tech.map((tech) => (
-                    <motion.span
-                      key={tech}
-                      className="flex items-center gap-1 px-3 py-1 bg-accent/10 rounded-xl text-sm font-medium"
-                      whileHover={{ scale: 1.08, backgroundColor: "rgba(var(--accent-rgb), 0.2)" }}
-                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                    >
-                      {techIcons[tech as keyof typeof techIcons]}
-                      {tech}
-                    </motion.span>
-                  ))}
-                </div>
-
-                {/* Achievements */}
-                <ul className="list-disc ml-5 space-y-2 text-foreground/80">
-                  {exp.achievements.map((achievement, i) => (
-                    <motion.li
-                      key={achievement}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: i * 0.1, type: "spring", stiffness: 80, damping: 12 }}
-                    >
-                      {achievement}
-                    </motion.li>
-                  ))}
-                </ul>
               </div>
-            </motion.div>
-          ))}
-        </motion.div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
-} 
+}

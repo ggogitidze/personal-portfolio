@@ -1,17 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Urbanist } from "next/font/google";
 import "./globals.css";
 import Providers from '@/app/providers';
-import Sidebar from '../components/Sidebar';
+import Navbar from '../components/Navbar';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const urbanist = Urbanist({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: "--font-urbanist",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -25,12 +21,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground transition-colors duration-300`}>
-      <body>
+    <html lang="en" suppressHydrationWarning className={`${urbanist.variable} antialiased bg-background text-foreground`}>
+      <body className="font-sans antialiased overflow-x-hidden selection:bg-accent/20 selection:text-accent">
         <Providers>
-          <div className="min-h-screen flex flex-col">
-            <Sidebar />
-            <main className="flex-1 flex flex-col">
+          <div className="min-h-screen flex flex-col relative">
+            <Navbar />
+            <main className="flex-1 flex flex-col w-full">
               {children}
             </main>
           </div>
@@ -39,3 +35,4 @@ export default function RootLayout({
     </html>
   );
 }
+
