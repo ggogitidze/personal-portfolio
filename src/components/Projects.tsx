@@ -2,6 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { FiExternalLink, FiGithub } from "react-icons/fi";
 
 // Keep existing data
 const projects = [
@@ -58,12 +59,12 @@ export default function Projects() {
 
             {/* Content Column */}
             <div className={`lg:col-span-5 flex flex-col justify-center ${idx % 2 !== 0 ? 'lg:order-2' : 'lg:order-1'}`}>
-              <div className="flex flex-col gap-6">
+              <div className="flex flex-col gap-6 bg-[#f6f6f6] rounded-2xl shadow-md px-8 py-12">
                 <motion.h3
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="heading-large uppercase"
+                  className="heading-medium uppercase"
                 >
                   {project.title}
                 </motion.h3>
@@ -86,45 +87,32 @@ export default function Projects() {
                 </div>
 
                 <div className="flex gap-6 mt-4">
-                  <a href={project.demo} target="_blank" rel="noopener noreferrer" className="text-lg font-bold border-b border-black hover:text-accent hover:border-accent transition-colors pb-1">
-                    Live Demo &nearr;
+                  <a href={project.demo} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-lg font-bold border-b border-black hover:text-accent hover:border-accent transition-colors pb-1">
+                    Live Demo <FiExternalLink />
                   </a>
-                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-lg font-bold border-b border-black hover:text-accent hover:border-accent transition-colors pb-1">
-                    GitHub &nearr;
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-lg font-bold border-b border-black hover:text-accent hover:border-accent transition-colors pb-1">
+                    GitHub <FiGithub />
                   </a>
                 </div>
               </div>
             </div>
 
-            {/* Image Column (Mockup) */}
+            {/* Image Column */}
             <div className={`lg:col-span-7 relative ${idx % 2 !== 0 ? 'lg:order-1' : 'lg:order-2'}`}>
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
-                className="relative w-full aspect-[16/10] bg-subtle rounded-lg overflow-hidden border border-black/5 shadow-2xl group"
+                className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden shadow-lg group"
               >
-                {/* Mockup Frame (Browser Header) */}
-                <div className="absolute top-0 left-0 right-0 h-6 bg-white border-b border-black/5 flex items-center px-4 gap-2 z-10">
-                  <div className="w-2 h-2 rounded-full bg-red-400" />
-                  <div className="w-2 h-2 rounded-full bg-yellow-400" />
-                  <div className="w-2 h-2 rounded-full bg-green-400" />
-                </div>
-
-                {/* Project Image */}
-                <div className="absolute top-6 inset-x-0 bottom-0 overflow-hidden">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                  />
-                </div>
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                />
               </motion.div>
-
-              {/* Decorative Shadow/Depth Element */}
-              <div className="absolute -inset-4 bg-black/5 -z-10 rounded-xl transform translate-x-4 translate-y-4" />
             </div>
 
           </div>

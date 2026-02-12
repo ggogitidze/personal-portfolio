@@ -1,18 +1,30 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
+import {
+  SiJavascript,
+  SiTypescript,
+  SiReact,
+  SiNodedotjs,
+  SiGo,
+  SiPython,
+  SiMongodb,
+  SiPostgresql,
+  SiDocker,
+  SiGit,
+} from "react-icons/si";
 
 const skills = [
-  { name: "JavaScript", level: "Expert" },
-  { name: "TypeScript", level: "Advanced" },
-  { name: "React", level: "Expert" },
-  { name: "Node.js", level: "Advanced" },
-  { name: "Go", level: "Intermediate" },
-  { name: "Python", level: "Advanced" },
-  { name: "MongoDB", level: "Advanced" },
-  { name: "PostgreSQL", level: "Intermediate" },
-  { name: "Docker", level: "Intermediate" },
-  { name: "Git", level: "Advanced" },
+  { name: "JavaScript", icon: SiJavascript },
+  { name: "TypeScript", icon: SiTypescript },
+  { name: "React", icon: SiReact },
+  { name: "Node.js", icon: SiNodedotjs },
+  { name: "Go", icon: SiGo },
+  { name: "Python", icon: SiPython },
+  { name: "MongoDB", icon: SiMongodb },
+  { name: "PostgreSQL", icon: SiPostgresql },
+  { name: "Docker", icon: SiDocker },
+  { name: "Git", icon: SiGit },
 ];
 
 export default function Skills() {
@@ -31,10 +43,10 @@ export default function Skills() {
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="flex flex-col gap-2 p-6 border border-black/5 hover:border-black/100 transition-colors duration-300"
+                className="flex flex-col items-center gap-3 p-6 bg-[#f6f6f6] rounded-2xl shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
               >
+                <skill.icon className="text-3xl text-black/70" />
                 <span className="text-xl font-bold">{skill.name}</span>
-                <span className="text-xs font-mono uppercase text-black/40">{skill.level}</span>
               </motion.div>
             ))}
           </div>
