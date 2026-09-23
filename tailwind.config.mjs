@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+const config = {
   content: [
     './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
@@ -9,7 +9,7 @@ export default {
       colors: {
         background: '#ffffff', // Pure white
         foreground: '#171717', // Pure black text
-        accent: '#FF4500', // The "Punch" Orange-Red
+        accent: '#C73600', // Accessible orange-red on white and the subtle neutral surface
         subtle: '#F5F5F5', // Light grey for sections
         medium: '#CCCCCC', // Medium grey for dividers/secondary text
         dark: '#333333', // Dark grey for hover
@@ -34,4 +34,6 @@ export default {
     },
   },
   plugins: [],
-}; 
+};
+
+export default config;

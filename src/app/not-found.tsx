@@ -1,0 +1,2 @@
+import Link from "next/link";
+export default function NotFound() { return <section className="technical-grid flex min-h-[70vh] items-center"><div className="site-shell"><p className="eyebrow text-accent">404 / Route not found</p><h1 className="heading-large mt-5">This circuit is open.</h1><p className="body-text mt-6">The requested portfolio page does not exist.</p><Link className="focus-ring mt-8 inline-flex bg-black px-6 py-4 font-bold text-white hover:bg-accent" href="/">Return home</Link></div></section>; }
