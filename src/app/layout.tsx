@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import RouteScrollReset from "@/components/RouteScrollReset";
 
 const urbanist = Urbanist({ subsets: ["latin"], variable: "--font-urbanist", display: "swap" });
 
@@ -24,6 +25,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" className={urbanist.variable}>
       <body>
+        <RouteScrollReset />
         <a href="#main-content" className="focus-ring fixed left-3 top-3 z-[100] -translate-y-24 bg-black px-4 py-2 text-white focus:translate-y-0">Skip to content</a>
         <Navbar />
         <main id="main-content">{children}</main>

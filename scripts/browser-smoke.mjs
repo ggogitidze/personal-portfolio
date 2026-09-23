@@ -62,6 +62,27 @@ async function checkPage(page, route, viewportName) {
 try {
   const desktop = await browser.newPage({ viewport: { width: 1440, height: 900 } });
   for (const route of routes) await checkPage(desktop, route, "desktop");
+
+  for (const destination of [
+    { name: "Energy & Grid", path: "/energy-systems" },
+    { name: "Embedded & Signal", path: "/embedded-signal-systems" },
+  ]) {
+    await desktop.goto(baseUrl, { waitUntil: "networkidle" });
+    await desktop.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+    await desktop.getByRole("link", { name: destination.name, exact: true }).click();
+    await desktop.waitForURL(`**${destination.path}`);
+    await desktop.waitForFunction(() => window.scrollY === 0);
+    const position = await desktop.evaluate(() => window.scrollY);
+    if (position !== 0) failures.push(`${destination.path}: route navigation landed at scrollY=${position}`);
+  }
+
+  await desktop.goto(`${baseUrl}/energy-systems`, { waitUntil: "networkidle" });
+  await desktop.getByRole("link", { name: "Education", exact: true }).click();
+  await desktop.waitForURL("**/#education");
+  await desktop.waitForFunction(() => {
+    const target = document.getElementById("education");
+    return target !== null && target.getBoundingClientRect().top >= 80 && target.getBoundingClientRect().top < 120;
+  });
   await desktop.close();
 
   const mobile = await browser.newPage({ viewport: { width: 390, height: 844 }, isMobile: true });
